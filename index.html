@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#030609">
+<title>Earth / Deep Time</title><meta name="description" content="Explore 4.54 billion years of Earth history through reconstructed continents, ice sheets and a cinematic one-minute journey.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23275067'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js"}}</script>
+</head>
+<body>
+<canvas id="earth" aria-label="Earth and its geological history"></canvas>
+<div id="body-labels" aria-hidden="true"><span id="label-earth" hidden></span><span id="label-theia" hidden></span><span id="label-moon" hidden></span></div>
+<div id="loading" role="status"><span class="loader"></span><strong>EARTH</strong><span id="progress">Preparing the globe</span></div>
+<header class="ui"><span class="brand">EARTH <span>/ DEEP TIME</span></span><div class="actions">
+<button id="lighting" aria-pressed="true" title="Switch lighting · L">Studio light</button>
+<button id="info" class="icon-button" aria-label="About this reconstruction" aria-expanded="false" aria-controls="information">i</button>
+<button id="hide" class="icon-button" aria-label="Hide controls · H" aria-pressed="false" title="Clean view · H"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M8 12h8"/></svg></button>
+<button id="fullscreen" class="icon-button" aria-label="Full screen · F" title="Full screen · F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5M15 4h5v5M20 15v5h-5M4 15v5h5"/></svg></button>
+</div></header>
+<section class="epoch ui" aria-label="Current era"><span id="source-label" class="eyebrow"></span><h1 id="age">Earth today</h1><h2 id="epoch-name"></h2><p id="epoch-description"></p><span id="loading-era" hidden>Loading era…</span><span id="detail-status"></span></section>
+<section id="time-panel" class="ui" aria-label="Geological timeline">
+<div class="time-top"><button id="play" aria-label="Play history" title="Play or pause · Space">▶</button><button id="restart" aria-label="Return to the beginning" title="Return to the beginning">↶</button><button id="speed" aria-pressed="false" title="Switch between a 60-second and a 3.5-minute timeline">1× · 3:30</button><button id="minute" title="Watch all ten chapters in one minute">History in 60s</button><span class="live-age" aria-label="Current time"><b id="live-age-number">4,540,000,000</b><em id="live-age-unit">YEARS AGO</em></span><small>Drag to explore</small></div>
+<input id="timeline" type="range" min="0" max="1000" step="0.01" value="0" aria-label="Geological time">
+<div class="time-labels" aria-hidden="true"><span>4.54 billion</span><span style="left:58.879%">1.8 billion</span><span style="left:76.724%">540 million</span><span style="left:86.810%">2.58 million</span><span style="left:94.569%">26,000</span><span style="left:100%">Today</span></div>
+<nav class="chapters" aria-label="Jump to an era"><button data-age="4540">Formation</button><button id="impact" title="Play the approach, impact and lunar formation">Theia / Moon</button><button data-age="4300">Oceans</button><button data-age="1000">Rodinia</button><button data-age="690">Snowball Earth</button><button data-age="250">Pangaea</button><button data-age="100">Breakup</button><button data-age="0.0225">Ice ages</button><button data-age="0">Today</button></nav>
+<p id="certainty"></p></section>
+<aside id="information" hidden role="dialog" aria-label="About this reconstruction"><button id="close-info" class="icon-button dialog-close" aria-label="Close information">×</button><span class="eyebrow">ABOUT THE RECONSTRUCTION</span><h2>A planet across deep time.</h2>
+<p>Modern surface: NASA Blue Marble, GSHHG coastlines and NOAA ETOPO 2022 relief.<br>Last 80,000 years: PaleoMIST 1.0.<br>Last 540 million years: PALEOMAP PaleoDEM.<br>Back to 1.8 billion years ago: CAO2024 continental blocks.</p>
+<p>Early Earth, ancient clouds, fine surface detail, colours and Cryogenian ice fronts are illustrative. Theia represents the giant-impact hypothesis for lunar formation. The approach follows two-body gravity; melt flow, ejecta and lunar assembly are visual reconstructions. Later impacts are representative examples. Ancient maps are interpolated; this is not a physical tectonics simulator.</p>
+<div class="keyboard-hints"><span><kbd>Space</kbd> Play / pause</span><span><kbd>H</kbd> Clean view</span><span><kbd>C</kbd> Clouds</span><span><kbd>F</kbd> Full screen</span><span><kbd>L</kbd> Lighting</span><span><kbd>R</kbd> Reset camera</span></div>
+<p class="small">Drag to orbit. Scroll or pinch to zoom. Studio light keeps the visible globe readable; sunlight preserves day and night.</p><p class="small">The timeline is nonlinear. The 60-second journey uses ten paced chapters. Land imagery dates to August 2004; cloud imagery to July 2001. This is not live weather.</p></aside>
+<button id="restore-ui" aria-label="Show controls · H" title="Show controls · H">Show controls</button>
+<div id="failure" hidden role="alert"></div><script type="module" src="app.js"></script>
+</body></html>
